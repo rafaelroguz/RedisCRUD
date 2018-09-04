@@ -48,7 +48,7 @@ public class Main {
                     default:
                         System.out.println("Please choose a valid option.");
                 }
-            } while (option != 4);
+            } while (option != 5);
         } catch (NumberFormatException e1) {
             System.out.println("Please choose a valid option.");
         }
@@ -69,7 +69,7 @@ public class Main {
         try {
             //Recuperamos la informacion del trabajador a insertar
             System.out.println("What is the worker full name?");
-            worker.setName(keyboard.nextLine());
+            worker.setName(keyboard.nextLine().toUpperCase());
             System.out.println("How old it the worker?");
             worker.setAge(keyboard.nextInt());
             System.out.println("How much the worker gets paid?");
@@ -105,7 +105,7 @@ public class Main {
         System.out.println("Type the name of the worker to delete:");
 
         //Recuperamos el nombre del trabajador a borrar
-        workerName = keyboard.nextLine();
+        workerName = keyboard.nextLine().toUpperCase();
 
         for (String w: workers) {
             //Si el nombre que introdujo el usuario se encuentra en Redis, lo eliminamos
@@ -120,7 +120,7 @@ public class Main {
         //Imprimimos el contenido de SET despues de eliminar.
         getWorkers(jedis);
 
-        System.out.println("\n--------------------------------------------------");
+        System.out.println("--------------------------------------------------");
     }
 
     /**
@@ -143,7 +143,7 @@ public class Main {
         System.out.println("Type the name of the worker to edit:");
 
         //Recuperamos el nombre del trabajador a editar
-        workerName = keyboard.nextLine();
+        workerName = keyboard.nextLine().toUpperCase();
 
         for (String w: workers) {
             if (w.contains(workerName)) {
@@ -157,15 +157,15 @@ public class Main {
 
                 //Realizamos la edicion en todos los campos
                 System.out.println("Edit name? (Y/N)");
-                answer = keyboard.nextLine().charAt(0);
+                answer = keyboard.nextLine().toUpperCase().charAt(0);
                 if (answer == 'Y') {
                     System.out.println("What is the worker full name?");
-                    worker.setName(keyboard.nextLine());
+                    worker.setName(keyboard.nextLine().toUpperCase());
                     answer = 'N';
                 }
 
                 System.out.println("Edit age? (Y/N)");
-                answer = keyboard.nextLine().charAt(0);
+                answer = keyboard.nextLine().toUpperCase().charAt(0);
                 if (answer == 'Y') {
                     System.out.println("How old it the worker?");
                     worker.setAge(keyboard.nextInt());
@@ -173,7 +173,7 @@ public class Main {
                 }
 
                 System.out.println("Edit salary? (Y/N)");
-                answer = keyboard.nextLine().charAt(0);
+                answer = keyboard.nextLine().toUpperCase().charAt(0);
                 if (answer == 'Y') {
                     System.out.println("How much the worker gets paid?");
                     worker.setSalary(keyboard.nextDouble());
@@ -201,9 +201,13 @@ public class Main {
     public static void getWorkers(Jedis jedis) {
         Set<String> workers = jedis.smembers("worker-set");
 
+        System.out.println("\nALL WORKERS--------------------------------------------------");
+
         for (String w: workers) {
             System.out.println(w);
         }
+
+        System.out.println("\n--------------------------------------------------");
     }
 
     /**
