@@ -51,6 +51,10 @@ public class Main {
                         ZSETRedis zsetRedis = new ZSETRedis();
                         zsetRedis.execute(jedis);
                         break;
+                    case 6:
+                        System.out.println("Good bye!");
+                        System.exit(0);
+                        break;
                     default:
                         System.out.println("Please choose a valid option.");
                 }
