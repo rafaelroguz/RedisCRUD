@@ -1,0 +1,11 @@
+Integrantes: 
+
+Daniel Fernando Baas Colonia
+Rodrigo Castilla López
+
+Rafael Rodríguez Guzmán
+
+Intrucciones:
+1) Ejecutar el servidor redis con "redis-server"
+2) Ejecutar el archivo "RedisCRUD.jar". Para ello se puede usar el comando "java -jar RedisCRUD.jar"
+3) Seleccionar una opción del menú. Cada estructura de datos tiene una opción correspondiente, pues son ejemplos diferentes.
